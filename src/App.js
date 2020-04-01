@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import notifier from "./components/growlAlert/notifier";
+import {Growl} from "primereact/growl";
+import Home from "./components/growlAlert/Home";
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+          <div className="App">
+            <Growl     ref={ref => notifier.setGrowl(ref)}
+                     onClose={() => notifier.invokeOnClose()} />
+          </div>
+          <Route exact path="/" component={Home}/>
+      </Router>
   );
 }
 
