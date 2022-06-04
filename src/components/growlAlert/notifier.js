@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import { Component } from 'react';
 
-export default class notifier extends Component{
+export default class notifier extends Component {
     static growl;
     static onClose;
 
@@ -8,8 +8,7 @@ export default class notifier extends Component{
         this.growl = growl;
     }
 
-
-    static show(not){
+    static show(not) {
         if (this.growl) {
             this.growl.show(not);
         }
